@@ -209,6 +209,14 @@ describe('truncate', function() {
     input  = 'hello<iframe src="//youtube.com" allowfullscreen></iframe>world';
     actual = truncate(input, 8);
     expect = 'hello<iframe src="//youtube.com" allowfullscreen></iframe>wor...';
+  });
+
+  it('should handle single quotes in attributes', function() {
+    var input, expect, actual;
+
+    input  = "hello <a href='http://google.com'>world</a>";
+    actual = truncate(input, 8);
+    expect = "hello <a href='http://google.com'>wo...</a>";
     assert.strictEqual(expect, actual);
   });
 
